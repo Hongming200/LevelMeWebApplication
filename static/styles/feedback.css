@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  width: auto;
+  background-color: #FFF7F8;
+}
+
+.bmd-label-floating {
+    width: 75%;
+    padding: 20px;
+}
+
+.button-submit-float {
+    padding: 20px;
+}
+
+#click-create-feedback input {
+    background-color: #9c27b0;
+}
+
+#click-create-feedback {
+    width: 96%;
+}

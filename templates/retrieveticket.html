@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Library Loan System - Retrieve Tickets{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Retrieve Tickets</h1>
+<div>
+    {% if count == 0 %}
+    <p>There are no ticket.</p>
+    {% elif count == 1 %}
+    <p>There is 1 ticket.</p>
+    {% else %}
+    <p>There are {{ count }} tickets.</p>
+    {% endif %}
+</div>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Email</th>
+            <th>Issue</th>
+            <th>Feedback</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for key in issue_dict %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>{{ issue_dict[key][0] }}</td>
+            <td>{{ issue_dict[key][1] }}</td>
+        </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+

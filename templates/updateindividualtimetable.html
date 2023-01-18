@@ -1,0 +1,80 @@
+{% extends "base2.html" %}
+{% block title %}Level Me - Individual TimeTable Update {% endblock %}
+{% block route %} Individual TimeTable Update {% endblock %}
+{% block content %}
+<div id="layoutAuthentication">
+    <div id="layoutAuthentication_content">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header"><h3 class="text-center font-weight-light my-4">Update Individual Timetable</h3></div>
+                            <div class="card-body">
+                            <form method="POST" action="" >
+                                {{  form.hidden_tag()  }}
+                                <div class="form-group">
+                                  {{  form.date.label(class="small mb-1")  }}
+                                  {% if form.date.errors %}
+                                      {{  form.date(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form.date.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form.date(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form.time.label(class="small mb-1")  }}
+                                  {% if form.time.errors %}
+                                      {{  form.time(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form.time.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form.time(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form.name.label(class="small mb-1")  }}
+                                  {% if form.name.errors %}
+                                      {{  form.name(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form.name.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form.name(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form.email.label(class="small mb-1")  }}
+                                  {% if form.email.errors %}
+                                      {{  form.email(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form.email.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form.email(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group mt-4 mb-0">
+                                    {{  form.submit(class="btn btn-primary")  }}
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}

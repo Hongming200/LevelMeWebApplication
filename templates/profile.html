@@ -1,0 +1,232 @@
+{% extends "base2.html" %}
+{% block title %}Level Me - Profile{% endblock %}
+{% block route %} View Profile {% endblock %}
+{% block content %}
+
+<div class="container">
+
+   {% if user.get_picture() == 'default.jpg'%}
+        {% if user.get_gender() == 'F' %}
+        <div id="content" class="content p-0">
+            <div class="profile-header">
+                <div class="profile-header-cover"></div>
+
+                <div class="profile-header-content">
+                    <div class="profile-header-img">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" />
+                    </div>
+
+                    <div class="profile-header-info">
+                        <h4 class="m-t-sm">{{ user.get_first_name() }} {{ user.get_last_name() }}</h4>
+                        <p class="m-b-sm">{{ user.get_occupation() }}</p>
+                        <a href="../updateprofile/{{ id }}" class="btn btn-xs btn-primary mb-3">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div id="content" class="content p-0">
+            <div class="profile-header">
+                <div class="profile-header-cover"></div>
+
+                <div class="profile-header-content">
+                    <div class="profile-header-img">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" />
+                    </div>
+
+                    <div class="profile-header-info">
+                        <h4 class="m-t-sm">{{ user.get_first_name() }} {{ user.get_last_name() }}</h4>
+                        <p class="m-b-sm">{{ user.get_occupation() }}</p>
+                        <a href="../updateprofile/{{ id }}" class="btn btn-xs btn-primary mb-3">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+         {% endif %}
+     {% else %}
+        <div id="content" class="content p-0">
+            <div class="profile-header">
+                <div class="profile-header-cover"></div>
+
+                <div class="profile-header-content">
+                    <div class="profile-header-img">
+                        <img src="{{ image_file }}" alt="" />
+                    </div>
+
+                    <div class="profile-header-info">
+                        <h4 class="m-t-sm">{{ user.get_first_name() }} {{ user.get_last_name() }}</h4>
+                        <p class="m-b-sm">{{ user.get_occupation() }}</p>
+                        <a href="../updateprofile/{{ id }}" class="btn btn-xs btn-primary mb-3">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <form method="POST" action="" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            {{  form.hidden_tag()  }}
+            <div class="form-group">
+              {{  form.picture.label()  }}
+              {{  form.picture(class="form-control-file")  }}
+              {% if form.picture.errors %}
+                  {% for error in form.picture.errors %}
+                  <span class="text-danger">{{ error }}</span></br>
+                  {% endfor %}
+              {% endif %}
+            </div>
+            <div class="form-group mt-4 mb-0">
+                {{  form.submit(class="btn btn-primary")  }}
+            </div>
+        </form>
+
+        <div class="profile-container">
+            <div class="row row-space-20">
+                <div class="col-md-8">
+                    <div class="tab-content p-0">
+                        <div class="tab-pane active show" id="profile-about">
+                            <table class="table table-profile">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">WORK AND EDUCATION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="field">Work</td>
+                                        <td class="value">
+                                            <div class="m-b-5">
+                                                <b>{{ user.get_experience() }}</b> <a href="../updateprofile/{{ id }}" class="m-l-10">Edit</a><br />
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Education</td>
+                                        <td class="value">
+                                            <div class="m-b-5">
+                                                <b>{{ user.get_education() }}</b> <a href="../updateprofile/{{ id }}" class="m-l-10">Edit</a><br />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Skills</td>
+                                        <td class="value">
+                                            {{ user.get_skills() }}<a href="../updateprofile/{{ id }}" class="m-l-10">Edit</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-profile">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">CONTACT INFORMATION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="field">Mobile Phones</td>
+                                        <td class="value">
+                                            {{ user.get_mobile_phone() }}
+                                            <a href="../updateprofile/{{ id }}" class="m-l-10">Edit</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Email</td>
+                                        <td class="value">
+                                            {{ user.get_email() }}
+                                            <a href="../updateprofile/{{ id }}" class="m-l-10">Edit</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Zoom Link</td>
+                                        <td class="value">
+                                            {{ user.get_link() }}
+                                            <a href="../updateprofile/{{ id }}" class="m-l-10">Edit</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Social Media</td>
+                                        <td class="value">
+                                            {{ user.get_social_media() }}
+                                            <a href="../updateprofile/{{ id }}" class="m-l-10">Edit</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-profile">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">BASIC INFORMATION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="field">Birth of Date</td>
+                                        <td class="value">
+                                            {{ user.get_birthdate() }}
+                                            <a href="../updateprofile/{{ id }}" class="m-l-10">Edit</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Gender</td>
+                                        <td class="value">
+                                            {{ user.get_gender() }}
+                                            <a href="../updateprofile/{{ id }}" class="m-l-10">Edit</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Language</td>
+                                        <td class="value">
+                                            {{ user.get_language() }}
+                                            <a href="../updateprofile/{{ id }}" class="m-l-10">Edit</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Country</td>
+                                        <td class="value">
+                                            {{ user.get_location() }}
+                                            <a href="../updateprofile/{{ id }}" class="m-l-10">Edit</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 hidden-xs hidden-sm">
+                    <ul class="profile-info-list">
+                        <li class="title">PERSONAL INFORMATION</li>
+                        <li>
+                            <div class="field">Occupation:</div>
+                            <div class="value">{{ user.get_occupation() }}</div>
+                        </li>
+                        <li>
+                            <div class="field">Skills:</div>
+                            <div class="value"> {{ user.get_skills() }} </div>
+                        </li>
+                        <li>
+                            <div class="field">Birth of Date:</div>
+                            <div class="value">{{ user.get_birthdate() }}</div>
+                        </li>
+                        <li>
+                            <div class="field">Country:</div>
+                            <div class="value">{{ user.get_birthdate() }}</div>
+                        </li>
+                        <li class="title">FRIEND LIST (9)</li>
+                        <li class="img-list">
+                            <a href="#" class="m-b-5"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" /></a>
+                            <a href="#" class="m-b-5"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" /></a>
+                            <a href="#" class="m-b-5"><img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="" /></a>
+                            <a href="#" class="m-b-5"><img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="" /></a>
+                            <a href="#" class="m-b-5"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" /></a>
+                            <a href="#" class="m-b-5"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" /></a>
+                            <a href="#" class="m-b-5"><img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="" /></a>
+                            <a href="#" class="m-b-5"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" /></a>
+                            <a href="#" class="m-b-5"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" /></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

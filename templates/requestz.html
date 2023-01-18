@@ -1,0 +1,44 @@
+{% extends "base2.html" %}
+{% block title %}Level Me - Student Request{% endblock %}
+{% block route %} Student Request{% endblock %}
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Student Request Table
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Individual/Group</th>
+                        <th>Timeslot</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Group</th>
+                        <th>Timeslot</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for student in stud_list %}
+                    <tr>
+                        <td>{{ student.get_first_name() + " " + student.get_last_name() }}</td>
+                        <td>{{ student.get_email() }}</td>
+                        <td>{{ student.get_size() }}</td>
+                        <td>{{ student.get_timeslot() }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

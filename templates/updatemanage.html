@@ -1,0 +1,41 @@
+{% extends "base2.html" %}
+{% block title %}Level Me - Manage Student {% endblock %}
+{% block route %} Manage Student {% endblock %}
+{% block content %}
+<div id="layoutAuthentication">
+    <div id="layoutAuthentication_content">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header"><h3 class="text-center font-weight-light my-4">Delete a student you are no longer teaching.</h3></div>
+                            <div class="card-body">
+                            <form method="POST" action="" >
+                                {{  form.hidden_tag()  }}
+                                <div class="form-group">
+                                  {{  form.student.label(class="small mb-1")  }}
+                                  {% if form.student.errors %}
+                                      {{  form.student(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form.student.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form.student(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group mt-4 mb-0">
+                                    {{  form.delete(class="btn btn-danger")  }}
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}

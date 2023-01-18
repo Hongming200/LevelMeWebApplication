@@ -1,0 +1,155 @@
+{% extends "base2.html" %}
+{% block title %}Level Me - Review{% endblock %}
+{% block route %} Review {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+<link rel="stylesheet" href="../static/css/review.css"/>
+<div class="container">
+    <div class="team-single">
+        <div class="row">
+            <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
+                <div class="team-single-img">
+                    <img src="{{image_file}}" alt="">
+                </div>
+                <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center">
+                    <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600">Class Teacher</h4>
+                    <p class="sm-width-95 sm-margin-auto">We are proud of the students we teach. We teach great activities and program for your kids.</p>
+                    <div class="margin-20px-top team-single-icons">
+                        <ul class="no-margin">
+                            <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 col-md-7">
+                <h2>Your Review</h2>
+                {% if user.get_rating() == 'Very Good' %}
+                <div class="card border-success mb-3" style="max-width: 75rem;">
+                  <div class="card-header">{{ user.get_first_name() + " " + user.get_last_name() }}</div>
+                  <div class="card-body text-success">
+                    <h5 class="card-title">Rating: Very Good</h5>
+                    <p class="card-text"> {{ user.get_review() }}</p>
+                  </div>
+                </div>
+                <form method="POST" action="" >
+                    {{  form.hidden_tag()  }}
+                  <div class="form-group mt-4 mb-0">
+                    {{  form.delete(class="btn btn-danger")  }}
+                  </div>
+                </form>
+                {% elif user.get_rating() == 'Very Bad' %}
+                <div class="card border-danger mb-3" style="max-width: 75rem;">
+                  <div class="card-header">{{ user.get_first_name() + " " + user.get_last_name() }}</div>
+                  <div class="card-body text-danger">
+                    <h5 class="card-title">Rating: Very Bad</h5>
+                    <p class="card-text">{{ user.get_review() }}</p>
+                  </div>
+                </div>
+                <form method="POST" action="" >
+                    {{  form.hidden_tag()  }}
+                  <div class="form-group mt-4 mb-0">
+                    {{  form.delete(class="btn btn-danger")  }}
+                  </div>
+                </form>
+                {% elif user.get_rating() == 'Average' %}
+                <div class="card border-warning mb-3" style="max-width: 75rem;">
+                  <div class="card-header">{{ user.get_first_name() + " " +  user.get_last_name() }}</div>
+                  <div class="card-body text-warning">
+                    <h5 class="card-title">Rating: Average</h5>
+                    <p class="card-text">{{ user.get_review() }}</p>
+                  </div>
+                </div>
+                <form method="POST" action="" >
+                    {{  form.hidden_tag()  }}
+                  <div class="form-group mt-4 mb-0">
+                    {{  form.delete(class="btn btn-danger")  }}
+                  </div>
+                </form>
+                {% else %}
+                  <div class="card border-light mb-3" style="max-width: 75rem;">
+                    <div class="card-header">No Current Review</div>
+                    <div class="card-body">
+                      <h5 class="card-title">A review would be kindly appreciated!</h5>
+                      <p class="card-text"><a href="../createreview/{{ id }}">Give a review!</a></p>
+                    </div>
+                  </div>
+
+                {% endif %}
+                <hr>
+                <div class="team-single-text padding-50px-left sm-no-padding-left">
+
+                    <h5 class="font-size24 sm-font-size22 xs-font-size20">Overall Reviews</h5>
+
+                        <div class="progress-text">
+                            <div class="row">
+                                <div class="col-7">Very Good </div>
+                                <div class="col-5 text-right">{{good}}%</div>
+                            </div>
+                        </div>
+                        <div class="custom-progress progress">
+                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{{good}}%" class="animated custom-bar progress-bar slideInLeft bg-green"></div>
+                        </div>
+
+                        <div class="progress-text">
+                            <div class="row">
+                                <div class="col-7">Average</div>
+                                <div class="col-5 text-right">{{avg}}%</div>
+                            </div>
+                        </div>
+                        <div class="custom-progress progress">
+                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{{avg}}%" class="animated custom-bar progress-bar slideInLeft bg-yellow"></div>
+                        </div>
+
+                        <div class="progress-text">
+                            <div class="row">
+                                <div class="col-7">Very Bad</div>
+                                <div class="col-5 text-right">{{bad}}%</div>
+                            </div>
+                        </div>
+                        <div class="custom-progress progress">
+                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{{bad}}%" class="animated custom-bar progress-bar slideInLeft bg-orange"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            <div class="col-md-12">
+                <hr>
+                <p>ALL REVIEWS</p>
+                <br>
+            {% for info in info_list %}
+            {% if info[1] == 'Very Good' %}
+              <div class="card border-success mb-3" style="max-width: 75rem;">
+                <div class="card-header">{{ info[0] }}</div>
+                <div class="card-body text-success">
+                  <h5 class="card-title">Rating: Very Good</h5>
+                  <p class="card-text">{{ info[2] }}</p>
+                </div>
+              </div>
+            {% elif info[1] == 'Very Bad' %}
+              <div class="card border-danger mb-3" style="max-width: 75rem;">
+                <div class="card-header">{{ info[0] }}</div>
+                <div class="card-body text-danger">
+                  <h5 class="card-title">Rating: Very Bad</h5>
+                  <p class="card-text">{{ info[2] }}</p>
+                </div>
+              </div>
+            {% elif info[1] == 'Average' %}
+              <div class="card border-warning mb-3" style="max-width: 75rem;">
+                <div class="card-header">{{ info[0] }}</div>
+                <div class="card-body text-warning">
+                  <h5 class="card-title">Rating: Average</h5>
+                  <p class="card-text">{{ info[2] }}</p>
+                </div>
+              </div>
+            {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

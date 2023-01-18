@@ -1,0 +1,63 @@
+{% extends "base2.html" %}
+{% block title %}Level Me - Support Ticket{% endblock %}
+{% block route %} Support Ticket {% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">Message Table</h4>
+          <p class="card-category"> Teacher</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                  <div>
+{% from "includes/_formHelper.html" import render_field %}
+
+<div class="container-fluid">
+    <h1 class="display-4">Retrieve Message</h1>
+    <div>
+    {% if count == 0 %}
+    <p>There are no message.</p>
+    {% elif count == 1 %}
+    <p>There is 1 message.</p>
+    {% else %}
+    <p>There are {{ count }} message.</p>
+    {% endif %}
+    </div>
+</div>
+
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th style = "text-align:center;">No.</th>
+            <th>Name</th>
+            <th>Message</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+   {% for messagetcs in messagetcs_list %}
+        <tr>
+            <td>{{ messagetcs.get_message_idtcs() }}</td>
+            <td>{{ messagetcs.get_name() }}</td>
+            <td>{{ messagetcs.get_message() }}</td>
+            <td><a></a></td>
+            <td>
+            </td>
+          </tr>
+    {% endfor %}
+
+    </tbody>
+  </table>
+                  </div>
+              </thead>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

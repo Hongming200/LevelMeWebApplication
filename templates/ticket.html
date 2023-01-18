@@ -1,0 +1,37 @@
+{% extends "base2.html" %}
+{% block title %}Level Me - Support Ticket{% endblock %}
+{% block route %} Support Ticket {% endblock %}
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h4>Your support ticket</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <th>Your email</th>
+                        <th>{{ user.get_email() }}</th>
+                    </tr>
+                    <tr>
+                        <th>Issue</th>
+                        <th>{{ user.get_ticket()[0]  }}</th>
+                    </tr>
+                    <tr>
+                        <th>Feedback</th>
+                        <th>{{ user.get_ticket()[1]  }}</th>
+                    </tr>
+                </tbody>
+            </table>
+            <form method="POST" action=''>
+                {{  form.hidden_tag()  }}
+                <div class="form-group mt-4 mb-0">
+                    {{  form.submit(class="btn btn-primary")  }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<small>Issue might take awhile to be resolved. Thank you for your cooperation.</small>
+{% endblock %}

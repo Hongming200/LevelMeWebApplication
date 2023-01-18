@@ -1,0 +1,44 @@
+{% extends "base2.html" %}
+{% block title %}Level Me - Group TimeTable{% endblock %}
+{% block route %} Group Timetable {% endblock %}
+{% block content %}
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Group Students Table
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <form method="POST" action=''>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>TimeSlot</th>
+                        <th>Group Number</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Date</th>
+                        <th>TimeSlot</th>
+                        <th>Group Number</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                {% for item in group_list %}
+                    <tr>
+                        <td>{{ item[0] }}</td>
+                        <td>{{ item[1] }}</td>
+                        <td>{{ item[2] }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+          </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

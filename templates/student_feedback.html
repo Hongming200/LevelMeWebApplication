@@ -1,0 +1,194 @@
+{% extends "base_feedback.html" %}
+
+
+{% block body %}
+
+
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+     <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+            Creative Tim
+        </a></div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="nav-item  ">
+                    <a class="nav-link" href="">
+                        <i class="material-icons">dashboard</i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{ url_for('final_profile') }}">
+                        <i class="material-icons">person</i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{ url_for('create_interest') }}">
+                        <i class="material-icons">person</i>
+                        <p>Create Interest</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{ url_for('create_studentrequest') }}">
+                        <i class="material-icons">person</i>
+                        <p>Create Student Request</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{ url_for('retrieve_studentrequests') }}">
+                        <i class="material-icons">content_paste</i>
+                        <p>Manage Student Request</p>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('student_feedback') }}">
+                        <i class="material-icons">library_books</i>
+                        <p>Feedback</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="./icons.html">
+                        <i class="material-icons">bubble_chart</i>
+                        <p>Icons</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="./map.html">
+                        <i class="material-icons">location_ons</i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="./notifications.html">
+                        <i class="material-icons">notifications</i>
+                        <p>Notifications</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="./rtl.html">
+                        <i class="material-icons">language</i>
+                        <p>RTL Support</p>
+                    </a>
+                </li>
+                <li class="nav-item active-pro ">
+                    <a class="nav-link" href="./upgrade.html">
+                        <i class="material-icons">unarchive</i>
+                        <p>Upgrade to PRO</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+
+      <!-- End Navbar -->
+        <div class="container-fluid">
+        <a href="{{ url_for('student_create_feedback') }}"   class="btn btn-success">Create Feedback</a>
+    </div>
+
+        <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">Feedback Table</h4>
+          <p class="card-category"> Feedback</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                  <div>
+{% from "includes/_formHelper.html" import render_field %}
+
+<div class="container-fluid">
+    <h1 class="display-4">Retrieve Feedback</h1>
+
+
+<div>
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th style = "text-align:center;">Feedback ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Category</th>
+            <th>Type</th>
+            <th>Feedback</th>
+            <th>Status</th>
+            <th>Date</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for feed in feedList %}
+        <tr>
+            <td style = "text-align:center;">{{ feed.get_feedID() }}</td>
+            <td>{{ feed.get_firstName() }}</td>
+            <td>{{ feed.get_email() }}</td>
+            {% if feed.get_category() == "F" %}
+            <td>Teacher</td>
+            {% elif feed.get_category() == "U" %}
+            <td>User</td>
+            {% elif feed.get_category() == "S" %}
+            <td>Service</td>
+            {% endif %}
+            {% if feed.get_type() == "G" %}
+            <td>Complain</td>
+            {% elif feed.get_type() == "B" %}
+            <td>Compliment</td>
+            {% endif %}
+            <td>{{ feed.get_remarks() }}</td>
+
+{% if feed.get_status() == "P" %}
+            <td>Pending</td>
+            {% elif feed.get_status() == "R" %}
+            <td>Resolve</td>
+            {% endif %}
+
+            <td>{{ feed.get_date() }}</td>
+
+        <td>
+          <form action=""  method="POST">
+
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+
+    </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+    </div>
+  </div>
+
+        <!-- <li class="header-title">Want more components?</li>
+            <li class="button-container">
+                <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
+                  Get the pro version
+                </a>
+            </li> -->
+
+
+    </div>
+  </div>
+
+</body>
+
+{% endblock %}

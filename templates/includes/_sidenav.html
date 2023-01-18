@@ -1,0 +1,102 @@
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <div class="sb-sidenav-menu-heading">For You</div>
+                <a class="nav-link" href="{{ url_for('home') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Home
+                </a>
+                <div class="sb-sidenav-menu-heading">Interface</div>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Profile
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="../profile/{{ id }}">View profile</a>
+                        <a class="nav-link" href="../updateprofile/{{ id }}">Update Profile</a>
+                        <a class="nav-link" href="../updatepassword/{{ id }}">Change password</a>
+                        <a class="nav-link" href="../deleteprofile/{{ id }}">Delete account</a>
+                        <a class="nav-link" href="../login">Log Out</a>
+                    </nav>
+                </div>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                    Update Tasks
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            Update Students
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="../updaterequestz/{{ id }}">Student Request</a>
+                                <a class="nav-link" href="../updatemanage/{{ id }}">Manage Students</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                            Update Timetable
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="../updateindividualtimetable/{{ id }}">Individual Timetable</a>
+                                <a class="nav-link" href="../updategrouptimetable/{{ id }}">Group Timetable</a>
+                                <a class="nav-link" href="../deletetimeslot/{{ id }}">Delete Timeslot</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapse" aria-expanded="false" aria-controls="pagesCollapse">
+                            Contact Us
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="pagesCollapse" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="../contactus/{{ id }}">Contact Us</a>
+                                <a class="nav-link" href="../updateticket/{{ id }}">Update Support Ticket</a>
+                                <a class="nav-link" href="../ticket/{{ id }}">Support Ticket</a>
+                                <a class="nav-link" href="{{ url_for('teacher_messagetcs') }}">Teacher Message</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Collapse" aria-expanded="false" aria-controls="Collapse">
+                            Review
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="Collapse" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="../review/{{ id }}">View Review</a>
+                                <a class="nav-link" href="../createreview/{{ id }}">Give Review</a>
+                                <a class="nav-link" href="../updatereview/{{ id }}">Update Review</a>
+                            </nav>
+                        </div>
+                    </nav>
+                </div>
+                <div class="sb-sidenav-menu-heading">View Tasks</div>
+                <a class="nav-link" href="../requestz/{{ id }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                    View Student Requests
+                </a>
+                <a class="nav-link" href="../manage/{{ id }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    View Students
+                </a>
+                <a class="nav-link" href="../individualtimetable/{{ id }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    View Individual TimeTable
+                </a>
+                <a class="nav-link" href="../grouptimetable/{{ id }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    View Group TimeTable
+                </a>
+            </div>
+        </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:</div>
+            User
+        </div>
+    </nav>
+</div>

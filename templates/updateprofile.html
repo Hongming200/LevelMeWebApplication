@@ -1,0 +1,216 @@
+{% extends "base2.html" %}
+{% block title %}Level Me - Profile Update {% endblock %}
+{% block route %} Profile Update {% endblock %}
+{% block content %}
+
+<div id="layoutAuthentication">
+    <div id="layoutAuthentication_content">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header"><h3 class="text-center font-weight-light my-4">Update Your Profile.</h3></div>
+                            <div class="card-body">
+                              <form method="POST" action=''>
+                                {{  form1.hidden_tag()  }}
+                                <div class="form-group">
+                                  {{  form1.first_name.label(class="small mb-1")  }}
+                                  {% if form1.first_name.errors %}
+                                      {{  form1.first_name(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.first_name.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.first_name(class="form-control py-4")  }}
+                                  {% endif %}
+                                  <small id="fullNameHelp" class="form-text text-muted">Your name may appear around here where you are mentioned. You can change or remove it at any time.</small>
+                                </div>
+                                <div class="form-group">
+                                  {{  form1.last_name.label(class="small mb-1")  }}
+                                  {% if form1.last_name.errors %}
+                                      {{  form1.last_name(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.last_name.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.last_name(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form1.occupation.label(class="small mb-1")  }}
+                                  {% if form1.occupation.errors %}
+                                      {{  form1.occupation(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.occupation.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.occupation(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form1.experience.label(class="small mb-1")  }}
+                                  {% if form1.experience.errors %}
+                                      {{  form1.experience(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.experience.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.experience(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form1.education.label(class="small mb-1")  }}
+                                  {% if form1.education.errors %}
+                                      {{  form1.education(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.education.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.education(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form1.skills.label(class="small mb-1")  }}
+                                  {% if form1.skills.errors %}
+                                      {{  form1.skills(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.skills.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.skills(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form1.mobile_phone.label(class="small mb-1")  }}
+                                  {% if form1.mobile_phone.errors %}
+                                      {{  form1.mobile_phone(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.mobile_phone.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.mobile_phone(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form1.email.label(class="small mb-1")  }}
+                                  {% if form1.email.errors %}
+                                      {{  form1.email(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.email.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.email(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form1.link.label(class="small mb-1")  }}
+                                  {% if form1.link.errors %}
+                                      {{  form1.link(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.link.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.link(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form1.social_media.label(class="small mb-1")  }}
+                                  {% if form1.social_media.errors %}
+                                      {{  form1.social_media(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.social_media.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.social_media(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form1.birthdate.label(class="small mb-1")  }}
+                                  {% if form1.birthdate.errors %}
+                                      {{  form1.birthdate(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.birthdate.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.birthdate(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form1.gender.label(class="small mb-1")  }}
+                                  {% if form1.gender.errors %}
+                                      {{  form1.gender(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.gender.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.gender(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form1.language.label(class="small mb-1")  }}
+                                  {% if form1.language.errors %}
+                                      {{  form1.language(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.language.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.language(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group">
+                                  {{  form1.location.label(class="small mb-1")  }}
+                                  {% if form1.location.errors %}
+                                      {{  form1.location(class="form-control is-invalid")  }}
+                                      <div class="invalid-feedback">
+                                          {% for error in form1.location.errors %}
+                                              <span>{{ error }}</span>
+                                          {% endfor %}
+                                      </div>
+                                  {% else %}
+                                      {{  form1.location(class="form-control py-4")  }}
+                                  {% endif %}
+                                </div>
+                                <div class="form-group small text-muted">
+                                  All of the fields on this page are optional and can be deleted at any time, and by filling them out, you're giving us consent to share this data wherever your user profile appears.
+                                </div>
+                                <div class="form-group mt-4 mb-0">
+                                    {{  form1.submit(class="btn btn-primary")  }}
+                                </div>
+                              </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
+
